@@ -55,19 +55,27 @@ alert:
 feishualert_botid:
   "botid"
 
-# title
-feishualert_title:
-  "test"
-
 # skip time
 feishualert_skip:
   start: "01:00:00"
   end: "09:00:00"
+  
+alert_subject: "错误日志报警"
 
-# content
-feishualert_body:
-  "
-  告警策略:  {feishualert_title}\n
-  总请求数:  {num_hits}\n
-  触发时间:  {feishualert_time}
-  "
+alert_text_type: alert_text_only
+
+alert_text: |
+ 【告警主题】 错误日志报警
+ 【告警条件】 Error级别日志1分钟内>100
+ 【所属应用】 {}
+ 【错误日志】 {}
+ 【异常详情】 {}
+ 【错误数量】 {}
+ 【告警时间】 {}
+ 
+alert_text_args:
+ - kubernetes.container.name
+ - message
+ - exception
+ - num_hits
+ - "@timestamp"
