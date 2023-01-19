@@ -1,4 +1,4 @@
-# elastalert-feishu-plugin
+# elastalert2-feishu-plugin
 ## 安装
 sudo apt install -y  python-pip python-dev libffi-dev libssl-dev
 
