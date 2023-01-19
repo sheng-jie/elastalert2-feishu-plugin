@@ -20,27 +20,28 @@ feishualert_url: "https://open.feishu.cn/open-apis/bot/v2/hook/"
 # 飞书机器人id
 feishualert_botid:
   "botid"
-
-# 告警标题
-feishualert_title:
-  "test"
-
+  
 # 这个时间段内的匹配将不告警，适用于某些时间段请求低谷避免误报警
 feishualert_skip:
   start: "01:00:00"
   end: "09:00:00"
 
-# 告警内容
-# 使用{}可匹配matches
-# 如匹配到的es数据为{"host":"aa.com","ip":"127.0.0.1"}
-feishualert_body:
-  "
-  告警策略:  {feishualert_title}\n
-  总请求数:  {num_hits}\n
-  触发时间:  {feishualert_time}\n
-  匹配域名:  {host}\n
-  匹配ip:  {ip}
-  "
+alert_subject: "错误日志报警"
+alert_text_type: alert_text_only
+alert_text: |
+ 【告警主题】 错误日志报警
+ 【告警条件】 Error级别日志1分钟内>100
+ 【所属应用】 {}
+ 【错误日志】 {}
+ 【异常详情】 {}
+ 【错误数量】 {}
+ 【告警时间】 {}
+alert_text_args:
+ - kubernetes.container.name
+ - message
+ - exception
+ - num_hits
+ - "@timestamp"
 ```
 
 ## 运行
